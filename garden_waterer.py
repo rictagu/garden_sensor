@@ -70,8 +70,8 @@ while True:
 		"rain": rain,
 		"light": luminosity
 	}
-	print payload
-	r = requests.post(conf.url, data = payload, auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass))
+	print json.dumps(payload)
+	r = requests.post(conf.url, data = json.dumps(payload), auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass))
 	print r.status_code
 	print r.text
 

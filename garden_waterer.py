@@ -71,6 +71,6 @@ while True:
 		"light": luminosity
 	}
 	print payload
-	r = requests.post('http://ec2-54-186-186-243.us-west-2.compute.amazonaws.com', data = payload, auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass))
+	r = requests.post(conf.url, data = payload, auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass))
 
 	time.sleep(5)

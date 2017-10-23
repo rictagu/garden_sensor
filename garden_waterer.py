@@ -72,7 +72,7 @@ while True:
 	}
 	print json.dumps(payload)
 	content = {'Content-type': 'application/json'}
-	r = requests.post(myconf.url, data = json, auth=HTTPBasicAuth(myconf.auth_user, myconf.auth_pass), headers=content)
+	r = requests.post(myconf.url, data = json.dumps(payload), auth=HTTPBasicAuth(myconf.auth_user, myconf.auth_pass), headers=content)
 	print r.status_code
 	print r.text
 

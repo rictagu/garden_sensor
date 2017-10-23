@@ -71,8 +71,9 @@ while True:
 		"light": luminosity
 	}
 	print json.dumps(payload)
-	r = requests.post(conf.url, data = json.dumps(payload), auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass))
+	headers = {'Content-type': 'application/json'}
+	r = requests.post(conf.url, data = json, auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass), headers=headers)
 	print r.status_code
 	print r.text
 
-	time.sleep(5)
+	time.sleep(60*60)

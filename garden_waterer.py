@@ -53,11 +53,11 @@ while True:
 		print "Partials: "
 		print "Soil Moisture=" + str(1023 - mcp.read_adc(0)) + " Rain=" + str(1023 - mcp.read_adc(1)) + " Luminosity=" + str(1023 - mcp.read_adc(2)) + ' Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(t0, h0)
 	vcc_sensors_off()
-	soil = sum(s)/len(s)
-	rain = sum(r)/len(r)
-	luminosity = sum(l)/len(l)
-	temperature = sum(t)/len(t)
-	humidity = sum(h)/len(h)
+	soil = int(sum(s)/len(s))
+	rain = int(sum(r)/len(r))
+	luminosity = int(sum(l)/len(l))
+	temperature = int(sum(t)/len(t))
+	humidity = int(sum(h)/len(h))
 	print "Soil Moisture=" + str(soil) + " Rain=" + str(rain) + " Luminosity=" + str(luminosity) + ' Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity)
 	time_now = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 	print time_now
@@ -72,5 +72,7 @@ while True:
 	}
 	print payload
 	r = requests.post(conf.url, data = payload, auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass))
+	print r.status_code
+	print r.text
 
 	time.sleep(5)

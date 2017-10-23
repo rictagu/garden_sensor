@@ -3,6 +3,9 @@ import Adafruit_MCP3008
 import Adafruit_DHT
 import RPi.GPIO as GPIO 
 import time
+import requests
+from time import gmtime, strftime
+import json
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(26, GPIO.OUT) 	# set a controlable VCC for sensors, to avoid keeping ON all the time to avoid galvanization
@@ -54,4 +57,17 @@ while True:
 	temperature = sum(t)/len(t)
 	humidity = sum(h)/len(h)
 	print "Soil Moisture=" + str(soil) + " Rain=" + str(rain) + " Luminosity=" + str(luminosity) + ' Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity)
+	time_now = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+	print time_now
+	payload = {
+		"datetime": time_now,
+		"pump": 0,
+		"soil": soil,
+		"temperature": temperature,
+		"humidity": humidity,
+		"rain": rain,
+		"light": luminosity
+	}
+	print payload
+	
 	time.sleep(5)

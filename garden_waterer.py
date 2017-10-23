@@ -62,7 +62,7 @@ while True:
 	time_now = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 	print time_now
 	payload = {
-		"datetime": time_now,
+		"current_date": time_now,
 		"pump": 0,
 		"soil": soil,
 		"temperature": temperature,

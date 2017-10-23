@@ -7,6 +7,7 @@ import requests
 from time import gmtime, strftime
 import json
 import conf
+from requests.auth import HTTPBasicAuth
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(26, GPIO.OUT) 	# set a controlable VCC for sensors, to avoid keeping ON all the time to avoid galvanization

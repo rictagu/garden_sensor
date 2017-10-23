@@ -6,7 +6,7 @@ import time
 import requests
 from time import gmtime, strftime
 import json
-import conf
+import myconf
 from requests.auth import HTTPBasicAuth
 
 GPIO.setmode(GPIO.BCM)
@@ -72,7 +72,7 @@ while True:
 	}
 	print json.dumps(payload)
 	content = {'Content-type': 'application/json'}
-	r = requests.post(conf.url, data = json, auth=HTTPBasicAuth(conf.auth_user, conf.auth_pass), headers=content)
+	r = requests.post(myconf.url, data = json, auth=HTTPBasicAuth(myconf.auth_user, myconf.auth_pass), headers=content)
 	print r.status_code
 	print r.text
 
